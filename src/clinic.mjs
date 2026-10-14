@@ -8,8 +8,20 @@ export const clinic = {
   weekdayHours: 'Monday - Saturday: 9:00 AM - 9:00 PM',
   sundayHours: 'Sunday: 9:00 AM - 2:00 PM',
   doctor: 'Dr. Faizan Aziz',
-  qualifications: 'MBBS, MD Pulmonology (FIIP Europe)',
+  qualifications: 'MBBS, MD (Pulmonology), FIIP',
   specialty: 'Consultant Interventional Pulmonologist',
+  doctorProfile: {
+    source: 'https://www.carehospitals.com/doctor/hyderabad/nampally/faizan-aziz-interventional-pulmonologist',
+    checkedOn: '2026-10-14',
+    experience: '7 years listed on the CARE Hospitals profile',
+    practice: 'CARE Hospitals, Nampally, Hyderabad',
+    languages: ['Hindi', 'English', 'Telugu'],
+    education: [
+      {degree: 'MBBS', institution: 'Deccan Medical College, Hyderabad', period: '2014'},
+      {degree: 'MD in Pulmonology', institution: 'Kaloji Narayana Rao University of Health Sciences, Warangal', period: '2016-2019'},
+      {degree: 'FIIP - Fellowship in Interventional Pulmonology', institution: 'Venice, Italy (Europe)', period: ''},
+    ],
+  },
 };
 export const tests = ['Complete Blood Picture (CBP)', 'ESR', 'Hemoglobin', 'Blood Grouping & Rh Typing', 'Platelet Count', 'HbA1c', 'Fasting Blood Sugar', 'Post Lunch Blood Sugar', 'Random Blood Sugar', 'Thyroid Profile (T3, T4, TSH)', 'TSH', 'Lipid Profile', 'Liver Function Test (LFT)', 'Kidney Function Test', 'Serum Creatinine', 'Blood Urea', 'Complete Urine Examination', 'Vitamin D', 'Vitamin B12'];
 export const faqs = [

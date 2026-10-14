@@ -27,7 +27,15 @@ test('all three routes have local assets, semantic navigation and correct metada
     }
     for(const link of window.document.querySelectorAll('a[href^="#"]')) assert.ok(window.document.getElementById(link.getAttribute('href').slice(1)),link.outerHTML);
     assert.doesNotMatch(window.document.body.textContent,/PROCARE|PRO-LAB-|PDF Delivered|Verified by Pathologist|100% Accurate|Booking Confirmed/);
-    if(!route){assert.equal($('.brand img').getAttribute('src'),'/images/logo.png');assert.equal($('.doctor-portrait').getAttribute('src'),'/images/profile.png');for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','contact','timings','location','appointment'])assert.ok($('#'+id));}
+    if(!route){assert.equal($('.brand img').getAttribute('src'),'/images/logo.png');assert.equal($('.doctor-portrait').getAttribute('src'),'/images/profile.png');
+      assert.equal(window.document.querySelectorAll('#doctors').length,1);
+      assert.match($('#doctors').textContent,/Education & Fellowship/);
+      assert.match($('#doctors').textContent,/7 years listed on the CARE Hospitals profile/);
+      assert.match($('#doctors').textContent,/Hindi, English, Telugu/);
+      assert.equal($('.doctor-source').href,clinic.doctorProfile.source);
+      assert.equal(schema.find(n=>n['@type']==='Person').sameAs,clinic.doctorProfile.source);
+      assert.doesNotMatch(window.document.body.textContent,/68106529/);
+for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','contact','timings','location','appointment'])assert.ok($('#'+id));}
     dom.window.close();
   }
   assert.ok(readFileSync('dist/robots.txt','utf8').includes('/sitemap.xml'));
