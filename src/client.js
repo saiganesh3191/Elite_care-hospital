@@ -32,7 +32,18 @@
     const open = toggle.getAttribute('aria-expanded') !== 'true';
     toggle.setAttribute('aria-expanded',String(open)); toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation'); navigation.classList.toggle('is-open',open);
   });
-  $$('a',navigation).forEach(link => link.addEventListener('click', () => {navigation.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}));
+  const closeNavigation = () => {
+    navigation.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+  };
+  $$('a',navigation).forEach(link => link.addEventListener('click', closeNavigation));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      closeNavigation();
+      toggle.focus();
+    }
+  });
   const dialog = $('#enquiry-dialog'), form = $('#enquiry-form'), review = $('#enquiry-review');
   const types = {
     appointment: ['Appointment Request', 'Reception will confirm the doctor\'s availability and timing on WhatsApp.', 'an appointment with '+config.doctor],

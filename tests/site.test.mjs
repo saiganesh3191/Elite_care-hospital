@@ -43,8 +43,13 @@ for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','conta
   assert.ok(statSync('src/client.js').size<15000);
 });
 test('mobile menu and appointment validation/review/edit/reset',()=>{
-  const {$,change,submit,dom}=page();
+  const {$,change,submit,dom,window}=page();
   $('.menu-toggle').click();assert.equal($('.menu-toggle').getAttribute('aria-expanded'),'true');$('#main-nav a[href="#doctors"]').click();assert.equal($('.menu-toggle').getAttribute('aria-expanded'),'false');
+  assert.equal($('.menu-toggle').getAttribute('aria-label'),'Open navigation');
+  $('.menu-toggle').click();
+  window.document.dispatchEvent(new window.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+  assert.equal($('.menu-toggle').getAttribute('aria-expanded'),'false');
+  assert.equal(window.document.activeElement,$('.menu-toggle'));
   $('[data-open="appointment"]').click();assert.ok($('#enquiry-dialog').open);
   change('#enquiry-form input[name="name"]',' Test <Patient> ');change('#enquiry-form input[name="phone"]','123');submit('#enquiry-form');assert.equal($('#enquiry-review').hidden,true);assert.match($('#enquiry-form .form-error').textContent,/valid/);
   change('#enquiry-form input[name="phone"]','+91 90000 00000');submit('#enquiry-form');assert.equal($('#enquiry-review').hidden,false);

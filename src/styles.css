@@ -24,3 +24,130 @@
 .doctor-source{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 .doctor-source .icon{width:13px;height:13px}
 @media(max-width:700px){.doctor-profile-grid{grid-template-columns:1fr;gap:14px}.doctor-summary,.doctor-education{padding:20px}.doctor-summary h3{font-size:21px}.doctor-facts>div{grid-template-columns:110px 1fr;gap:10px}.doctor-summary .button{font-size:12px;padding-inline:12px}}
+
+/* Phone and tablet layouts: keep content in normal flow and preserve touch space. */
+@media (max-width: 950px) {
+  .header-inner nav.is-open {
+    max-height: calc(100dvh - 88px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .header-inner nav a { min-height: 44px; display: flex; align-items: center; }
+  .menu-toggle { min-width: 44px; min-height: 44px; }
+  .lab-layout { grid-template-columns: minmax(0, 1fr); }
+  .test-panel, .request-panel, .doctor-summary, .doctor-education { min-width: 0; }
+}
+@media (max-width: 600px) {
+  .header-inner { gap: 8px; }
+  .header-book { min-width: 44px; min-height: 44px; flex-shrink: 0; }
+  .header-inner nav.is-open { max-height: calc(100dvh - 78px); }
+  .hero h1 { font-size: clamp(32px, 9vw, 44px); }
+  .hero-copy, .hero-doctor { width: 100%; max-width: 100%; min-width: 0; }
+  .hero-services { line-height: 1.8; }
+  .hero-doctor h2 { font-size: clamp(24px, 6.5vw, 29px); }
+  .hero-doctor > p:last-child { font-size: 14px; }
+  .hero-mobile-book { width: 100%; min-height: 46px; font-size: 14px; }
+  .hero-art, .hero:has(.doctor-portrait) .hero-art {
+    margin: 16px 0 0;
+    width: 100%;
+    max-width: 330px;
+    height: 345px;
+    align-self: center;
+    opacity: 1;
+  }
+  .hero-art .doctor-portrait { object-fit: contain; object-position: center bottom; }
+  .hero-benefits { margin-top: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-benefits > div { min-width: 0; gap: 8px; padding-inline: 10px; }
+  .quick-row { min-height: 65px; }
+  .section-heading { flex-wrap: wrap; gap: 10px; }
+  .section-heading .small-button { min-height: 44px; font-size: 12px; }
+  .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-content { min-width: 0; }
+  .service-content h3 { font-size: 14px; }
+  .service-content p { font-size: 13px; }
+  .service-content .button { min-height: 44px; font-size: 12px; }
+  .why-grid, .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .why-card { min-width: 0; }
+  .why-card h3 { font-size: 12px; }
+  .steps h3 { font-size: 13px; }
+  .steps p { font-size: 12px; }
+  .steps li { min-width: 0; }
+  .promo-grid { grid-template-columns: minmax(0, 1fr); }
+  .promo { grid-template-columns: minmax(0, 1fr); }
+  .promo > div:last-child { padding: 22px; min-width: 0; }
+  .promo h2 { font-size: 26px; }
+  .promo .button { min-height: 46px; font-size: 14px; max-width: 100%; }
+  .promo .text-button { min-height: 44px; font-size: 13px; }
+  .check-list li { font-size: 14px; line-height: 1.5; padding-left: 23px; }
+  .check-list li:before { width: 16px; height: 16px; font-size: 12px; top: 2px; }
+  .phone-demo {
+    width: 170px;
+    height: 255px;
+    margin: 22px auto 0;
+    transform: none;
+    border-radius: 23px;
+  }
+  .phone-screen { padding: 10px; }
+  .phone-screen > span:not(.demo-search) { font-size: 9px; }
+  .pharmacy-photo { height: 190px; }
+  .pharmacy-photo img { object-position: center 40%; }
+  .faq-grid summary { font-size: 14px; min-height: 48px; }
+  .faq-grid details p { font-size: 14px; }
+  .doctor-facts > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .doctor-summary .button { width: 100%; min-height: 46px; font-size: 13px; }
+  .doctor-facts dd, .doctor-education li span { overflow-wrap: anywhere; }
+  .footer-inner .footer-brand { transform: none; min-width: 0; margin: 0; }
+  .footer-brand .brand-image { width: 165px; }
+  .footer-links { flex-wrap: wrap; gap: 12px; }
+  .footer-links > a { min-height: 44px; display: inline-flex; align-items: center; }
+  .map-link { min-height: 44px; font-size: 12px; }
+  .floating-actions { right: max(12px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); }
+  .floating-actions a { width: 46px; height: 46px; }
+  .form-grid { grid-template-columns: minmax(0, 1fr); }
+  label > input, label > textarea, label > select { font-size: 16px; min-width: 0; }
+  .collection-options { flex-wrap: wrap; }
+  .collection-options label { min-height: 46px; min-width: 120px; }
+  .dialog-heading { align-items: flex-start; gap: 10px; }
+  .dialog-heading h2 { font-size: 21px; overflow-wrap: anywhere; }
+  .close-dialog { min-width: 44px; height: 44px; }
+  dialog { width: calc(100% - 24px); max-height: calc(100dvh - 24px); }
+  body:has(dialog[open]) { overflow: hidden; }
+  .dialog-body .button, .request-panel .button { min-height: 46px; font-size: 14px; white-space: normal; }
+  .text-button, .selected-chip { min-height: 44px; }
+  .selected-chip { max-width: 100%; text-align: left; overflow-wrap: anywhere; }
+  .panel-heading { flex-wrap: wrap; }
+  .test-option { min-height: 58px; font-size: 14px; }
+  .contact-grid address { overflow-wrap: anywhere; }
+}
+@media (max-width: 380px) {
+  .brand-image { width: 148px; }
+  .shell { width: calc(100% - 28px); }
+  .service-grid { grid-template-columns: minmax(0, 1fr); }
+  .service-grid > article:last-child { display: flex; grid-column: auto; }
+  .service-grid > article:last-child .service-image { height: 170px; min-height: 170px; margin-bottom: 17px; }
+  .service-grid > article:last-child .service-image > span { bottom: -18px; }
+  .service-image { height: 170px; }
+  .service-content { padding: 14px; }
+  .service-content .button { font-size: 14px; }
+  .why-grid, .steps { grid-template-columns: minmax(0, 1fr); }
+  .why-card h3 { font-size: 14px; }
+  .steps li { align-items: center; min-height: 65px; }
+  .steps h3 { font-size: 14px; }
+  .steps p { font-size: 13px; }
+}
+
+@media (min-width: 601px) and (max-width: 950px) {
+  .hero-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; padding-bottom: 24px; }
+  .hero-copy { width: 100%; min-width: 0; }
+  .hero-services { white-space: normal; line-height: 1.8; }
+  .hero-art { position: relative; inset: auto; height: 350px; min-width: 0; }
+  .hero-art .doctor-portrait { object-fit: contain; object-position: center bottom; }
+  .quick-book { position: relative; inset: auto; width: 100%; align-self: stretch; }
+  .hero-benefits { position: relative; inset: auto; align-self: stretch; grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .header-inner nav a { font-size: 14px; }
+  .contact-grid p, .contact-grid address { font-size: 13px; line-height: 1.6; }
+  .footer-links { font-size: 13px; }
+  .copyright { font-size: 11px; }
+}
