@@ -13,7 +13,7 @@ npm test
 npm run dev
 ```
 
-Preview: http://localhost:5174
+Preview defaults to http://localhost:5174. If that port is busy, the server tries the next free port and prints the actual URL.
 
 The site contains `/`, `/lab-tests`, and `/gallery`. All three are generated as real HTML files. Appointments, pharmacy, day care, checkups and report requests use WhatsApp drafts. Visitors must send their message and wait for reception confirmation. No backend, patient storage, payment collection, fake booking references or generated medical reports.
 
