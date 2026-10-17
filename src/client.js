@@ -77,6 +77,14 @@
     showDetails($('.review-details',review),rows);$('#enquiry-send').href=whatsapp(request);form.hidden=true;review.hidden=false;review.setAttribute('tabindex','-1');review.focus();
   });
   $('.edit-request',review).addEventListener('click',()=>{review.hidden=true;form.hidden=false;});
+  const profileTabs = $$('[role="tab"]');
+  profileTabs.forEach((tab,index)=>{
+    tab.addEventListener('click',()=>{
+      profileTabs.forEach(item=>{item.setAttribute('aria-selected','false');item.tabIndex=-1;const panel=$('#'+item.getAttribute('aria-controls'));if(panel)panel.hidden=true;});
+      tab.setAttribute('aria-selected','true');tab.tabIndex=0;const panel=$('#'+tab.getAttribute('aria-controls'));if(panel)panel.hidden=false;
+    });
+    tab.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();const next=(index+(event.key==='ArrowRight'?1:-1)+profileTabs.length)%profileTabs.length;profileTabs[next].focus();profileTabs[next].click();});
+  });
   const labForm = $('#lab-form');
   if (!labForm) return;
   const checkboxes=$$('input[name="tests"]'),selectedList=$('#selected-list'),labReview=$('#lab-review');

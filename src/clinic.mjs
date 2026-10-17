@@ -33,6 +33,16 @@ export const clinic = {
     ],
     memberships: ['European Respiratory Society (reported)', 'British Thoracic Society (reported)', 'MRCEM / Royal College of Emergency Medicine status (exact credential to be confirmed)'],
     awards: ['Best International Fellow in Interventional Pulmonology, Venice (reported, 2023)', 'Dr. APJ Abdul Kalam Health and Excellence Award (reported, 2024)', 'India’s Most Eminent Health Care Excellence recognition by Success Today (reported, 2024)'],
+    media: [
+      ['Interview', 'His journey in interventional pulmonology', 'Training, respiratory-health work, clinical focus and professional goals.', 'https://thesuccesstoday.com/healthcare-eminence-awards/dr-faizan-aziz-mbbs-interventional-pulmonologist-consultant/'],
+      ['Community health', 'Project OJAS for tuberculosis patients', 'CARE Hospitals and Jagathi Foundation initiative supporting TB patients in Hyderabad.', 'https://www.pninews.com/care-hospitals-in-association-with-jagathi-foundation-launches-flagship-csr-initiative-project-ojas-to-support-tb-patients/'],
+      ['Hospital profile', 'Interventional pulmonology at Virinchi', 'Professional profile covering reported expertise, training, experience and recognition.', 'https://virinchihospitals.com/doctors/dr-faizan-aziz/'],
+    ],
+    talks: [
+      ['Doctor talk', 'Protecting your lungs during the monsoon', 'Public guidance about viral illness and respiratory infections during rainy weather.', 'https://www.linkedin.com/posts/dr-faizan-aziz-a347ba221_drtalk-lunghealthawareness-lungdoctor-activity-7225135566839803904-B9v4'],
+      ['Case discussion', 'Rigid thoracoscopy and pleural biopsy', 'A public clinical explanation of investigating recurrent, unresolved pleural effusion.', 'https://www.linkedin.com/posts/dr-faizan-aziz-a347ba221_interventionalpulmonology-rigidthoracoscopy-activity-7155103717589929986-T51A'],
+      ['Professional channel', 'More lung-health updates from Dr. Faizan Aziz', 'Public posts covering interventional pulmonology and respiratory-health awareness.', 'https://in.linkedin.com/in/dr-faizan-aziz-a347ba221'],
+    ],
     verificationNote: 'This preview compiles publicly available professional information. Conflicting education dates, institutional wording, memberships, awards, current locations and timings must be confirmed by Dr. Faizan Aziz before production publication.',
   },
 };
