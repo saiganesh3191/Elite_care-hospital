@@ -41,6 +41,8 @@ for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','conta
     assert.equal($('#location .map-link').href,clinic.mapsUrl);
     assert.equal($('#location .location-address-link').href,clinic.mapsUrl);
     assert.match($('#timings').textContent,/7:00 PM - 10:00 PM/);
+    assert.equal($('.floating-call span').textContent,'Call');
+    assert.equal($('.floating-book span').textContent,'Book appointment');
     dom.window.close();
   }
   assert.ok(readFileSync('dist/robots.txt','utf8').includes('/sitemap.xml'));
@@ -62,6 +64,16 @@ test('full doctor profile provides structured, carefully qualified information',
   assert.match(window.document.body.textContent,/Client verification required/);
   assert.match(window.document.body.textContent,/conflicting education dates/i);
   assert.doesNotMatch(window.document.body.textContent,/guaranteed|best doctor in Hyderabad/i);
+  dom.window.close();
+});
+test('gallery shows sourced doctor photography instead of placeholders',()=>{
+  const {window,dom}=page('gallery');
+  assert.equal(window.document.querySelectorAll('.gallery-card').length,6);
+  assert.equal(window.document.querySelectorAll('.gallery-card img[alt]').length,6);
+  assert.equal(window.document.querySelectorAll('.gallery-card figcaption>a[target="_blank"]').length,3);
+  assert.match(window.document.body.textContent,/Dr\. Faizan Aziz/);
+  assert.match(window.document.body.textContent,/Project OJAS/);
+  assert.doesNotMatch(window.document.body.textContent,/coming soon/i);
   dom.window.close();
 });
 test('mobile menu and appointment validation/review/edit/reset',()=>{
