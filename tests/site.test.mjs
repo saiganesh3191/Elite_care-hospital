@@ -15,8 +15,8 @@ function page(route='') {
   const submit=selector=>$(selector).dispatchEvent(new window.Event('submit',{bubbles:true,cancelable:true}));
   return {dom,window,$,change,submit};
 }
-test('all three routes have local assets, semantic navigation and correct metadata',()=>{
-  for(const route of ['','lab-tests','gallery']){
+test('all four routes have local assets, semantic navigation and correct metadata',()=>{
+  for(const route of ['','doctor/dr-faizan-aziz','lab-tests','gallery']){
     const {dom,$,window}=page(route);
     assert.equal(window.document.querySelectorAll('h1').length,1);
     assert.equal($('link[rel="canonical"]').href,'https://elite-care-hospital.pages.dev/'+route);
@@ -39,8 +39,18 @@ for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','conta
     dom.window.close();
   }
   assert.ok(readFileSync('dist/robots.txt','utf8').includes('/sitemap.xml'));
-  const sitemap=readFileSync('dist/sitemap.xml','utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,3);
+  const sitemap=readFileSync('dist/sitemap.xml','utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,4);
   assert.ok(statSync('src/client.js').size<15000);
+});
+test('full doctor profile provides structured, carefully qualified information',()=>{
+  const {$,window,dom}=page('doctor/dr-faizan-aziz');
+  assert.match($('h1').textContent,/Dr\. Faizan Aziz/);
+  for(const id of ['about-doctor','qualifications','expertise','procedures','experience','recognition','doctor-faq']) assert.ok($('#'+id));
+  assert.ok(window.document.querySelectorAll('.procedure-grid>div').length>=10);
+  assert.match(window.document.body.textContent,/Client verification required/);
+  assert.match(window.document.body.textContent,/conflicting education dates/i);
+  assert.doesNotMatch(window.document.body.textContent,/guaranteed|best doctor in Hyderabad/i);
+  dom.window.close();
 });
 test('mobile menu and appointment validation/review/edit/reset',()=>{
   const {$,change,submit,dom,window}=page();

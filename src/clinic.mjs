@@ -21,6 +21,19 @@ export const clinic = {
       {degree: 'MD in Pulmonology', institution: 'Kaloji Narayana Rao University of Health Sciences, Warangal', period: '2016-2019'},
       {degree: 'FIIP - Fellowship in Interventional Pulmonology', institution: 'Venice, Italy (Europe)', period: ''},
     ],
+    registration: '93743 (reported by verified medical-directory profiles; council wording to be confirmed)',
+    conditions: ['Asthma', 'COPD and emphysema', 'Tuberculosis', 'Pneumonia and respiratory infections', 'Sleep-related breathing disorders', 'Interstitial lung disease (ILD)', 'Allergic airway disease', 'Pleural effusion', 'Pneumothorax', 'Lung masses and lung cancer evaluation', 'Obesity-related breathing problems', 'Post-COVID respiratory concerns'],
+    procedures: ['Flexible and rigid bronchoscopy', 'Linear and radial EBUS', 'EBUS-TBNA and mediastinal lymph-node sampling', 'Endobronchial and transbronchial lung biopsy', 'Medical thoracoscopy and pleural biopsy', 'Cryobiopsy and cryo-lung procedures', 'Tumour debulking', 'Airway stenting and foreign-body extraction', 'Thoracentesis, ICD drainage and pleurodesis', 'Sleep study and CPAP titration', 'Fluoroscopy-assisted pulmonary procedures', 'Lung-cancer diagnosis and staging'],
+    career: [
+      ['2018–2019', 'Senior Registrar, Critical Care', 'Yashoda Hospital, Somajiguda'],
+      ['2019–2020', 'Critical Care Intensivist', 'Apollo Hospital, Hyderguda'],
+      ['2020–2022', 'Pulmonologist / Junior Consultant', 'CARE Hospital, Banjara Hills'],
+      ['2022–2023', 'Consultant Pulmonologist', 'ZOI Hospitals, Ameerpet'],
+      ['Current listing', 'Consultant Interventional Pulmonologist', 'CARE Hospitals, Nampally'],
+    ],
+    memberships: ['European Respiratory Society (reported)', 'British Thoracic Society (reported)', 'MRCEM / Royal College of Emergency Medicine status (exact credential to be confirmed)'],
+    awards: ['Best International Fellow in Interventional Pulmonology, Venice (reported, 2023)', 'Dr. APJ Abdul Kalam Health and Excellence Award (reported, 2024)', 'India’s Most Eminent Health Care Excellence recognition by Success Today (reported, 2024)'],
+    verificationNote: 'This preview compiles publicly available professional information. Conflicting education dates, institutional wording, memberships, awards, current locations and timings must be confirmed by Dr. Faizan Aziz before production publication.',
   },
 };
 export const tests = ['Complete Blood Picture (CBP)', 'ESR', 'Hemoglobin', 'Blood Grouping & Rh Typing', 'Platelet Count', 'HbA1c', 'Fasting Blood Sugar', 'Post Lunch Blood Sugar', 'Random Blood Sugar', 'Thyroid Profile (T3, T4, TSH)', 'TSH', 'Lipid Profile', 'Liver Function Test (LFT)', 'Kidney Function Test', 'Serum Creatinine', 'Blood Urea', 'Complete Urine Examination', 'Vitamin D', 'Vitamin B12'];
