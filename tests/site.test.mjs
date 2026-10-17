@@ -48,6 +48,8 @@ test('full doctor profile provides structured, carefully qualified information',
   for(const id of ['about-doctor','qualifications','expertise','procedures','experience','recognition','doctor-faq']) assert.ok($('#'+id));
   assert.ok(window.document.querySelectorAll('.procedure-grid>div').length>=10);
   assert.equal(window.document.querySelectorAll('.profile-media-card').length,6);
+  assert.equal(window.document.querySelectorAll('.profile-media-card img').length,6);
+  assert.equal(window.document.querySelectorAll('.talk-card .play-button').length,3);
   assert.equal(window.document.querySelectorAll('[role="tab"]').length,3);
   $('#memberships-tab').click();assert.equal($('#memberships-panel').hidden,false);assert.equal($('#awards-panel').hidden,true);
   assert.match(window.document.body.textContent,/Client verification required/);
