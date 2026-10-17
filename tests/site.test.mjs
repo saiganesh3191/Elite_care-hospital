@@ -51,6 +51,7 @@ test('full doctor profile provides structured, carefully qualified information',
   assert.equal(window.document.querySelectorAll('.profile-media-card img').length,6);
   assert.equal(window.document.querySelectorAll('.talk-card .play-button').length,3);
   assert.ok(window.document.querySelector('.talk-card[href*="youtube.com/watch"]'));
+  assert.match(window.document.querySelector('.talk-card[href*="youtube.com/watch"] img').src,/img\.youtube\.com\/vi\/eGKtYMoaVZs/);
   assert.equal(window.document.querySelectorAll('[role="tab"]').length,3);
   $('#memberships-tab').click();assert.equal($('#memberships-panel').hidden,false);assert.equal($('#awards-panel').hidden,true);
   assert.match(window.document.body.textContent,/Client verification required/);
