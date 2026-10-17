@@ -39,9 +39,9 @@ export const clinic = {
       ['Hospital profile', 'Interventional pulmonology at Virinchi', 'Professional profile covering reported expertise, training, experience and recognition.', 'https://virinchihospitals.com/doctors/dr-faizan-aziz/'],
     ],
     talks: [
+      ['YouTube video', 'EBUS-TBNA procedure by Dr. Faizan Aziz', 'Virinchi Hospitals video covering endobronchial ultrasound-guided transbronchial needle aspiration.', 'https://www.youtube.com/watch?v=eGKtYMoaVZs'],
       ['Doctor talk', 'Protecting your lungs during the monsoon', 'Public guidance about viral illness and respiratory infections during rainy weather.', 'https://www.linkedin.com/posts/dr-faizan-aziz-a347ba221_drtalk-lunghealthawareness-lungdoctor-activity-7225135566839803904-B9v4'],
       ['Case discussion', 'Rigid thoracoscopy and pleural biopsy', 'A public clinical explanation of investigating recurrent, unresolved pleural effusion.', 'https://www.linkedin.com/posts/dr-faizan-aziz-a347ba221_interventionalpulmonology-rigidthoracoscopy-activity-7155103717589929986-T51A'],
-      ['Professional channel', 'More lung-health updates from Dr. Faizan Aziz', 'Public posts covering interventional pulmonology and respiratory-health awareness.', 'https://in.linkedin.com/in/dr-faizan-aziz-a347ba221'],
     ],
     verificationNote: 'This preview compiles publicly available professional information. Conflicting education dates, institutional wording, memberships, awards, current locations and timings must be confirmed by Dr. Faizan Aziz before production publication.',
   },
