@@ -27,7 +27,7 @@ test('all four routes have local assets, semantic navigation and correct metadat
     }
     for(const link of window.document.querySelectorAll('a[href^="#"]')) assert.ok(window.document.getElementById(link.getAttribute('href').slice(1)),link.outerHTML);
     assert.doesNotMatch(window.document.body.textContent,/PROCARE|PRO-LAB-|PDF Delivered|Verified by Pathologist|100% Accurate|Booking Confirmed/);
-    if(!route){assert.equal($('.brand img').getAttribute('src'),'/images/logo.png');assert.equal($('.doctor-portrait').getAttribute('src'),'/images/dr-faizan-enhanced.webp');
+    if(!route){assert.equal($('.brand img').getAttribute('src'),'/images/logo-clean.png');assert.equal($('.doctor-portrait').getAttribute('src'),'/images/dr-faizan-enhanced.webp');
       assert.equal(window.document.querySelectorAll('#doctors').length,1);
       assert.match($('#doctors').textContent,/Education & Fellowship/);
       assert.match($('#doctors').textContent,/7 years listed on the CARE Hospitals profile/);
