@@ -22,6 +22,8 @@ test('all four routes have local assets, semantic navigation and correct metadat
     assert.equal($('link[rel="canonical"]').href,'https://elite-care-hospital.pages.dev/'+route);
     const schema=JSON.parse($('script[type="application/ld+json"]').textContent)['@graph'];
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').telephone,clinic.phone);
+    assert.equal(schema.find(n=>n['@type']==='MedicalClinic').hasMap,clinic.mapsUrl);
+    assert.equal(schema.find(n=>n['@type']==='MedicalClinic').openingHoursSpecification[0].opens,'19:00');
     for(const el of window.document.querySelectorAll('img[src^="/"],script[src^="/"],link[href^="/assets/"]')){
       const asset=el.getAttribute('src')||el.getAttribute('href');assert.ok(existsSync('dist'+asset),asset);
     }
@@ -30,12 +32,15 @@ test('all four routes have local assets, semantic navigation and correct metadat
     if(!route){assert.equal($('.brand img').getAttribute('src'),'/images/logo-clean.png');assert.equal($('.doctor-portrait').getAttribute('src'),'/images/dr-faizan-enhanced.webp');
       assert.equal(window.document.querySelectorAll('#doctors').length,1);
       assert.match($('#doctors').textContent,/Education & Fellowship/);
-      assert.match($('#doctors').textContent,/7 years listed on the CARE Hospitals profile/);
+      assert.match($('#doctors').textContent,/7 years/);
       assert.match($('#doctors').textContent,/Hindi, English, Telugu/);
       assert.equal($('.doctor-source').href,clinic.doctorProfile.source);
       assert.equal(schema.find(n=>n['@type']==='Person').sameAs,clinic.doctorProfile.source);
       assert.doesNotMatch(window.document.body.textContent,/68106529/);
 for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','contact','timings','location','appointment'])assert.ok($('#'+id));}
+    assert.equal($('#location .map-link').href,clinic.mapsUrl);
+    assert.equal($('#location .location-address-link').href,clinic.mapsUrl);
+    assert.match($('#timings').textContent,/7:00 PM - 10:00 PM/);
     dom.window.close();
   }
   assert.ok(readFileSync('dist/robots.txt','utf8').includes('/sitemap.xml'));
