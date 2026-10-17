@@ -314,3 +314,32 @@ main:has(> .hero)>.doctor-cta{order:7}main:has(> .hero)>#faq{order:8}
   .service-card:hover,.gallery-card:hover,.profile-section:hover{transform:none}
 }
 @media(prefers-reduced-motion:reduce){.hero-orbit{animation:none}.reveal-ready{opacity:1;transform:none;transition:none}}
+
+/* Lightweight browser-only motion: no Functions, animation library or runtime service. */
+.scroll-progress{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,#df2938,var(--warm),var(--aqua));transform:scaleX(0);transform-origin:left center;will-change:transform;z-index:25}
+.hero-copy>.eyebrow{animation:heroEnter .6s ease-out both}.hero h1{animation:heroEnter .7s .08s ease-out both}.hero-services{animation:heroEnter .7s .16s ease-out both}.hero-doctor{animation:heroEnter .7s .23s ease-out both}.hero-stats{animation:heroEnter .7s .3s ease-out both}
+.hero-art .doctor-portrait{animation:doctorEnter .9s .12s cubic-bezier(.18,.8,.25,1) both;transform:translate3d(calc(var(--pointer-x,0)*-10px),calc(var(--pointer-y,0)*-7px),0);transition:transform .35s ease-out}
+.hero-art:before{transform:translate3d(calc(var(--pointer-x,0)*14px),calc(var(--pointer-y,0)*10px),0);transition:transform .5s ease-out}
+.hero-motto{animation:heroEnter .8s .32s ease-out both}
+.hero-stats>div{position:relative;overflow:hidden}.hero-stats>div:after{content:"";position:absolute;inset:-60% auto -60% -35%;width:28%;background:linear-gradient(90deg,transparent,#fff9,transparent);transform:rotate(18deg);animation:statShine 4.5s 1.4s ease-in-out infinite}
+.section-title:after,.section-heading h2:after{transform-origin:left;animation:lineGrow .8s ease-out both}
+.pointer-glow{position:relative;isolation:isolate}.pointer-glow:after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(220px circle at var(--glow-x,-300px) var(--glow-y,-300px),#72e0d32b,transparent 65%);opacity:0;transition:opacity .25s ease;pointer-events:none;z-index:0}.pointer-glow:hover:after{opacity:1}.pointer-glow>*{position:relative;z-index:1}
+.service-image img,.gallery-image img,.profile-card-cover img{transition:transform .55s cubic-bezier(.2,.75,.2,1),filter .4s ease}.service-card:hover .service-image img,.gallery-card:hover .gallery-image img,.profile-media-card:hover .profile-card-cover img{transform:scale(1.06);filter:saturate(1.06)}
+.service-image>span,.why-card>.icon,.contact-icon{transition:transform .35s cubic-bezier(.2,.8,.2,1)}.service-card:hover .service-image>span{transform:rotate(-7deg) scale(1.08)}.why-card:hover>.icon{transform:translateY(-5px) rotate(4deg)}.contact-grid>section:hover .contact-icon{transform:translateY(-4px)}
+.doctor-cta:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,#ffffff13 45%,transparent 70%);transform:translateX(-110%);animation:ctaSweep 7s 2s ease-in-out infinite}
+.quick-book{animation:quickFloat 4.5s ease-in-out infinite}.floating-actions a,.floating-actions button{transition:transform .2s ease,box-shadow .2s ease}.floating-actions a:hover,.floating-actions button:hover{transform:scale(1.08);box-shadow:0 8px 22px #07365c35}
+.faq-grid details[open]>p{animation:answerOpen .28s ease-out both}.faq-grid summary span{transition:transform .25s ease}
+@keyframes heroEnter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes doctorEnter{from{opacity:0;clip-path:inset(8% 0 0 12%)}to{opacity:1;clip-path:inset(0)}}
+@keyframes statShine{0%,65%,100%{left:-35%}82%{left:125%}}
+@keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes ctaSweep{0%,55%,100%{transform:translateX(-110%)}75%{transform:translateX(110%)}}
+@keyframes quickFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes answerOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media(max-width:950px){.hero-art .doctor-portrait,.hero-art:before{transform:none!important}.quick-book{animation:none}}
+@media(max-width:600px){.hero-copy>.eyebrow,.hero h1,.hero-services,.hero-doctor,.hero-stats,.hero-art .doctor-portrait,.hero-motto{animation-duration:.45s}.hero-stats>div:after{display:none}.floating-actions a:hover,.floating-actions button:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){
+  .hero-copy>.eyebrow,.hero h1,.hero-services,.hero-doctor,.hero-stats,.hero-art .doctor-portrait,.hero-motto,.hero-stats>div:after,.doctor-cta:before,.quick-book,.faq-grid details[open]>p{animation:none!important}
+  .hero-art .doctor-portrait,.hero-art:before{transform:none!important;transition:none!important}
+  .scroll-progress{display:none}.pointer-glow:after{display:none}
+}

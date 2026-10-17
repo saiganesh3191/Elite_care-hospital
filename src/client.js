@@ -124,9 +124,51 @@
     counters.forEach(counter=>counterObserver.observe(counter));
   } else counters.forEach(runCounter);
   const siteHeader=$('.site-header');
-  const updateHeader=()=>siteHeader?.classList.toggle('is-scrolled',window.scrollY>18);
+  const progressBar=document.createElement('span');
+  progressBar.className='scroll-progress';
+  progressBar.setAttribute('aria-hidden','true');
+  siteHeader?.append(progressBar);
+  let scrollFrame=0;
+  const updateHeader=()=>{
+    siteHeader?.classList.toggle('is-scrolled',window.scrollY>18);
+    const available=document.documentElement.scrollHeight-window.innerHeight;
+    progressBar.style.transform='scaleX('+(available>0?Math.min(window.scrollY/available,1):0)+')';
+    scrollFrame=0;
+  };
+  const requestScrollUpdate=()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateHeader);};
   updateHeader();
-  window.addEventListener('scroll',updateHeader,{passive:true});
+  window.addEventListener('scroll',requestScrollUpdate,{passive:true});
+  const finePointer=window.matchMedia?.('(pointer: fine)')?.matches ?? false;
+  const hero=$('.hero');
+  if(hero&&finePointer&&!motionReduced){
+    hero.addEventListener('pointermove',event=>{
+      const rect=hero.getBoundingClientRect();
+      hero.style.setProperty('--pointer-x',String((event.clientX-rect.left)/rect.width-.5));
+      hero.style.setProperty('--pointer-y',String((event.clientY-rect.top)/rect.height-.5));
+    });
+    hero.addEventListener('pointerleave',()=>{hero.style.setProperty('--pointer-x','0');hero.style.setProperty('--pointer-y','0');});
+  }
+  if(finePointer&&!motionReduced){
+    $$('.service-card,.why-card,.profile-media-card,.gallery-card').forEach(card=>{
+      card.classList.add('pointer-glow');
+      card.addEventListener('pointermove',event=>{
+        const rect=card.getBoundingClientRect();
+        card.style.setProperty('--glow-x',(event.clientX-rect.left)+'px');
+        card.style.setProperty('--glow-y',(event.clientY-rect.top)+'px');
+      });
+    });
+  }
+  const sectionLinks=$$('#main-nav a[href^="#"]');
+  const linkSections=sectionLinks.map(link=>[link,$(link.getAttribute('href'))]).filter(([,section])=>section);
+  if('IntersectionObserver' in window&&linkSections.length){
+    const navObserver=new IntersectionObserver(entries=>{
+      const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(!visible)return;
+      sectionLinks.forEach(link=>link.removeAttribute('aria-current'));
+      linkSections.find(([,section])=>section===visible.target)?.[0].setAttribute('aria-current','page');
+    },{rootMargin:'-30% 0px -60%',threshold:[0,.1,.4]});
+    linkSections.forEach(([,section])=>navObserver.observe(section));
+  }
   const labForm = $('#lab-form');
   if (!labForm) return;
   const checkboxes=$$('input[name="tests"]'),selectedList=$('#selected-list'),labReview=$('#lab-review');
