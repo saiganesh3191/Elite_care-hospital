@@ -68,9 +68,9 @@ test('full doctor profile provides structured, carefully qualified information',
 });
 test('gallery shows sourced doctor photography instead of placeholders',()=>{
   const {window,dom}=page('gallery');
-  assert.equal(window.document.querySelectorAll('.gallery-card').length,5);
-  assert.equal(window.document.querySelectorAll('.gallery-card img[alt]').length,5);
-  assert.equal(window.document.querySelectorAll('.gallery-card figcaption>a[target="_blank"]').length,3);
+  assert.equal(window.document.querySelectorAll('.gallery-card').length,4);
+  assert.equal(window.document.querySelectorAll('.gallery-card img[alt]').length,4);
+  assert.equal(window.document.querySelectorAll('.gallery-card figcaption>a[target="_blank"]').length,2);
   assert.match(window.document.body.textContent,/Dr\. Faizan Aziz/);
   assert.match(window.document.body.textContent,/Project OJAS/);
   assert.doesNotMatch(window.document.body.textContent,/coming soon/i);

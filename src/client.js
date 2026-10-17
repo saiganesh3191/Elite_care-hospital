@@ -85,6 +85,48 @@
     });
     tab.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();const next=(index+(event.key==='ArrowRight'?1:-1)+profileTabs.length)%profileTabs.length;profileTabs[next].focus();profileTabs[next].click();});
   });
+  const motionReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
+  const revealItems = $$([
+    '.service-card','.doctor-profile-grid>article','.why-card','.steps li','.promo',
+    '.faq-grid details','.profile-section','.profile-media-card','.gallery-card',
+    '.gallery-section-heading','.doctor-cta','.contact-grid>section'
+  ].join(','));
+  revealItems.forEach((item,index)=>{
+    item.classList.add('reveal-ready');
+    item.style.setProperty('--reveal-delay',String(Math.min(index%5,4)*70)+'ms');
+  });
+  if (motionReduced || !('IntersectionObserver' in window)) {
+    revealItems.forEach(item=>item.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    },{threshold:.12,rootMargin:'0px 0px -30px'});
+    revealItems.forEach(item=>revealObserver.observe(item));
+  }
+  const counters = $$('[data-count]');
+  const runCounter = element => {
+    const target = Number(element.dataset.count);
+    if (!Number.isFinite(target) || motionReduced) { element.textContent=String(target); return; }
+    const started = performance.now(), duration = 900;
+    const tick = now => {
+      const progress=Math.min((now-started)/duration,1);
+      element.textContent=String(Math.round(target*(1-Math.pow(1-progress,3))));
+      if(progress<1)requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window && !motionReduced) {
+    const counterObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){runCounter(entry.target);counterObserver.unobserve(entry.target);}}),{threshold:.7});
+    counters.forEach(counter=>counterObserver.observe(counter));
+  } else counters.forEach(runCounter);
+  const siteHeader=$('.site-header');
+  const updateHeader=()=>siteHeader?.classList.toggle('is-scrolled',window.scrollY>18);
+  updateHeader();
+  window.addEventListener('scroll',updateHeader,{passive:true});
   const labForm = $('#lab-form');
   if (!labForm) return;
   const checkboxes=$$('input[name="tests"]'),selectedList=$('#selected-list'),labReview=$('#lab-review');
