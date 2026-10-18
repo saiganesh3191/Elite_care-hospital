@@ -89,7 +89,7 @@
   const revealItems = $$([
     '.service-card','.doctor-profile-grid>article','.why-card','.steps li','.promo',
     '.faq-grid details','.profile-section','.profile-media-card','.gallery-card',
-    '.gallery-section-heading','.doctor-media-heading','.media-group-title','.doctor-cta','.contact-grid>section'
+    '.gallery-section-heading','.doctor-media-heading','.media-group-title','.trust-section>*','.doctor-cta','.contact-grid>section'
   ].join(','));
   revealItems.forEach((item,index)=>{
     item.classList.add('reveal-ready');
@@ -110,11 +110,13 @@
   const counters = $$('[data-count]');
   const runCounter = element => {
     const target = Number(element.dataset.count);
-    if (!Number.isFinite(target) || motionReduced) { element.textContent=String(target); return; }
-    const started = performance.now(), duration = 900;
-    const tick = now => {
-      const progress=Math.min((now-started)/duration,1);
-      element.textContent=String(Math.round(target*(1-Math.pow(1-progress,3))));
+    const suffix=element.dataset.suffix||'';
+    const display=value=>value.toLocaleString('en-IN')+suffix;
+    if(!Number.isFinite(target)||motionReduced){element.textContent=display(target);return;}
+    const started=performance.now(),duration=900;
+    const tick=now=>{
+      const progress=Math.min((now-started)/duration,1)
+      element.textContent=display(Math.round(target*(1-Math.pow(1-progress,3))));
       if(progress<1)requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);

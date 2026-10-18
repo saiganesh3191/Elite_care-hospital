@@ -39,6 +39,8 @@ test('all four routes have local assets, semantic navigation and correct metadat
       assert.equal(window.document.querySelectorAll('#doctor-media-home .profile-media-card').length,6);
       assert.equal(window.document.querySelectorAll('#doctor-media-home .talk-card .play-button').length,3);
       assert.ok(window.document.querySelector('#doctor-media-home .talk-card[href*="youtube.com/watch"]'));
+      assert.equal($('#reviews [data-count="10000"]').dataset.suffix,'+');
+      assert.equal($('#reviews .google-review-card a').href,clinic.mapsUrl);
       assert.equal(schema.find(n=>n['@type']==='Person').sameAs,clinic.doctorProfile.source);
       assert.doesNotMatch(window.document.body.textContent,/68106529/);
 for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','contact','timings','location','appointment'])assert.ok($('#'+id));}

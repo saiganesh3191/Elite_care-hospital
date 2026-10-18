@@ -54,6 +54,6 @@ export const faqs = [
   ['Can I request home sample collection?', 'Yes. Choose home collection on the lab tests page and provide your address. Reception will confirm pickup availability, preparation instructions, pricing and timing.'],
   ['How can I get my lab reports?', 'Use Request Lab Report to send your registered mobile number and sample or bill number to reception on WhatsApp. The clinic will confirm whether your report is available.'],
   ['Can I enquire about medicines?', 'Send your medicine names and quantities through the pharmacy enquiry form. You can attach your prescription in WhatsApp. Reception will confirm stock, pricing and delivery availability.'],
-  ['What are the clinic timings?', 'Monday to Saturday: 9:00 AM to 9:00 PM. Sunday: 9:00 AM to 2:00 PM. Please confirm doctor consultation and sample collection timings with reception.'],
+  ['What are the clinic timings?', 'Monday to Sunday: 7:00 PM to 10:00 PM. Please confirm doctor consultation and sample collection availability with reception.'],
   ['Where is Elite Health Care located?', 'V Care Clinic, Behind Habeeb Nagar PS, Near Alhamdulillah Hotel Road, Aghapura, Nampally, Hyderabad, Telangana 500001.'],
 ];
