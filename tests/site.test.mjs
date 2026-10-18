@@ -60,6 +60,9 @@ for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','conta
 test('full doctor profile provides structured, carefully qualified information',()=>{
   const {$,window,dom}=page('doctor/dr-faizan-aziz');
   assert.match($('h1').textContent,/Dr\. Faizan Aziz/);
+  assert.equal($('.profile-sources'),null);
+  assert.match($('.profile-location address').textContent,/V Care Clinic, Behind Habeeb Nagar PS/);
+  assert.equal($('.profile-location>.button').href,clinic.mapsUrl);
   for(const id of ['about-doctor','qualifications','expertise','procedures','experience','recognition','doctor-faq']) assert.ok($('#'+id));
   assert.ok(window.document.querySelectorAll('.procedure-grid>div').length>=10);
   assert.equal(window.document.querySelectorAll('.profile-media-card').length,6);
@@ -70,7 +73,6 @@ test('full doctor profile provides structured, carefully qualified information',
   assert.equal(window.document.querySelectorAll('[role="tab"]').length,3);
   $('#memberships-tab').click();assert.equal($('#memberships-panel').hidden,false);assert.equal($('#awards-panel').hidden,true);
   assert.match(window.document.body.textContent,/Client verification required/);
-  assert.match(window.document.body.textContent,/conflicting education dates/i);
   assert.doesNotMatch(window.document.body.textContent,/guaranteed|best doctor in Hyderabad/i);
   dom.window.close();
 });
