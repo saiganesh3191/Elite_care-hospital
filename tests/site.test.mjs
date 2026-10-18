@@ -35,6 +35,9 @@ test('all four routes have local assets, semantic navigation and correct metadat
       assert.match($('#doctors').textContent,/7 years/);
       assert.match($('#doctors').textContent,/Hindi, English, Telugu/);
       assert.equal($('.doctor-source').href,clinic.doctorProfile.source);
+      assert.equal(window.document.querySelectorAll('#doctor-media-home .profile-media-card').length,6);
+      assert.equal(window.document.querySelectorAll('#doctor-media-home .talk-card .play-button').length,3);
+      assert.ok(window.document.querySelector('#doctor-media-home .talk-card[href*="youtube.com/watch"]'));
       assert.equal(schema.find(n=>n['@type']==='Person').sameAs,clinic.doctorProfile.source);
       assert.doesNotMatch(window.document.body.textContent,/68106529/);
 for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','contact','timings','location','appointment'])assert.ok($('#'+id));}
@@ -71,6 +74,8 @@ test('gallery shows sourced doctor photography instead of placeholders',()=>{
   assert.equal(window.document.querySelectorAll('.gallery-card').length,4);
   assert.equal(window.document.querySelectorAll('.gallery-card img[alt]').length,4);
   assert.equal(window.document.querySelectorAll('.gallery-card figcaption>a[target="_blank"]').length,2);
+  assert.equal(window.document.querySelectorAll('#doctor-media-gallery .profile-media-card').length,6);
+  assert.equal(window.document.querySelectorAll('#doctor-media-gallery .talk-card .play-button').length,3);
   assert.match(window.document.body.textContent,/Dr\. Faizan Aziz/);
   assert.match(window.document.body.textContent,/Project OJAS/);
   assert.doesNotMatch(window.document.body.textContent,/coming soon/i);

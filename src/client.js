@@ -89,7 +89,7 @@
   const revealItems = $$([
     '.service-card','.doctor-profile-grid>article','.why-card','.steps li','.promo',
     '.faq-grid details','.profile-section','.profile-media-card','.gallery-card',
-    '.gallery-section-heading','.doctor-cta','.contact-grid>section'
+    '.gallery-section-heading','.doctor-media-heading','.media-group-title','.doctor-cta','.contact-grid>section'
   ].join(','));
   revealItems.forEach((item,index)=>{
     item.classList.add('reveal-ready');
