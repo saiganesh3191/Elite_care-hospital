@@ -16,6 +16,7 @@ export const clinic = {
     checkedOn: '2026-10-14',
     experience: '7 years',
     practice: 'CARE Hospitals, Nampally, Hyderabad',
+    elitePractice: 'Elite Health Care, V Care Clinic, Aghapura, Nampally, Hyderabad',
     languages: ['Hindi', 'English', 'Telugu'],
     education: [
       {degree: 'MBBS', institution: 'Deccan Medical College, Hyderabad', period: '2014'},

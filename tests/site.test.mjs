@@ -34,6 +34,7 @@ test('all four routes have local assets, semantic navigation and correct metadat
       assert.match($('#doctors').textContent,/Education & Fellowship/);
       assert.match($('#doctors').textContent,/7 years/);
       assert.match($('#doctors').textContent,/Hindi, English, Telugu/);
+      assert.match($('#doctors').textContent,/Elite Health Care, V Care Clinic/);
       assert.equal($('.doctor-source').href,clinic.doctorProfile.source);
       assert.equal(window.document.querySelectorAll('#doctor-media-home .profile-media-card').length,6);
       assert.equal(window.document.querySelectorAll('#doctor-media-home .talk-card .play-button').length,3);
@@ -46,6 +47,8 @@ for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','conta
     assert.match($('#timings').textContent,/7:00 PM - 10:00 PM/);
     assert.equal($('.floating-call span').textContent,'Call');
     assert.equal($('.floating-book span').textContent,'Book appointment');
+    assert.match($('.footer-contact address').textContent,/Aghapura, Nampally/);
+    assert.equal($('.footer-directions').href,clinic.mapsUrl);
     dom.window.close();
   }
   assert.ok(readFileSync('dist/robots.txt','utf8').includes('/sitemap.xml'));
