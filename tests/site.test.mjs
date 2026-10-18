@@ -34,7 +34,7 @@ test('all four routes have local assets, semantic navigation and correct metadat
       assert.match($('#doctors').textContent,/Education & Fellowship/);
       assert.match($('#doctors').textContent,/7 years/);
       assert.match($('#doctors').textContent,/Hindi, English, Telugu/);
-      assert.match($('#doctors').textContent,/Elite Health Care, V Care Clinic/);
+      assert.match($('#doctors').textContent,/Elite Health Care, Opposite Pillar No\. 97/);
       assert.equal($('.doctor-source').href,clinic.doctorProfile.source);
       assert.equal(window.document.querySelectorAll('#doctor-media-home .profile-media-card').length,6);
       assert.equal(window.document.querySelectorAll('#doctor-media-home .talk-card .play-button').length,3);
@@ -49,7 +49,7 @@ for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','conta
     assert.match($('#timings').textContent,/7:00 PM - 10:00 PM/);
     assert.equal($('.floating-call span').textContent,'Call');
     assert.equal($('.floating-book span').textContent,'Book appointment');
-    assert.match($('.footer-contact address').textContent,/Aghapura, Nampally/);
+    assert.match($('.footer-contact address').textContent,/Pillar No\. 97, Mughal Nagar/);
     assert.equal($('.footer-directions').href,clinic.mapsUrl);
     dom.window.close();
   }
@@ -61,7 +61,7 @@ test('full doctor profile provides structured, carefully qualified information',
   const {$,window,dom}=page('doctor/dr-faizan-aziz');
   assert.match($('h1').textContent,/Dr\. Faizan Aziz/);
   assert.equal($('.profile-sources'),null);
-  assert.match($('.profile-location address').textContent,/V Care Clinic, Behind Habeeb Nagar PS/);
+  assert.match($('.profile-location address').textContent,/Pillar No\. 97, Mughal Nagar/);
   assert.equal($('.profile-location>.button').href,clinic.mapsUrl);
   for(const id of ['about-doctor','qualifications','expertise','procedures','experience','recognition','doctor-faq']) assert.ok($('#'+id));
   assert.ok(window.document.querySelectorAll('.procedure-grid>div').length>=10);

@@ -3,9 +3,9 @@ export const clinic = {
   tagline: 'Your health | Our priority',
   phone: '+919966447044',
   phoneDisplay: '+91 99664 47044',
-  mapsUrl: 'https://maps.app.goo.gl/RPT59WYdJnmgm2xd7',
-  address: 'V Care Clinic, Behind Habeeb Nagar PS, Near Alhamdulillah Hotel Road, Aghapura, Nampally, Hyderabad, Telangana 500001',
-  locality: 'Aghapura, Nampally, Hyderabad',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Elite%20Health%20Care%20Opposite%20Pillar%20No%2097%20Mughal%20Nagar%20Ring%20Road%20Mehdi%20Colony%20Hyderabad%20500008',
+  address: 'Opposite Pillar No. 97, Mughal Nagar, Ring Road, Mehdi Colony, Hyderabad, Telangana 500008',
+  locality: 'Mehdi Colony, Hyderabad',
   weekdayHours: 'Monday - Sunday: 7:00 PM - 10:00 PM',
   sundayHours: '',
   doctor: 'Dr. Faizan Aziz',
@@ -16,7 +16,7 @@ export const clinic = {
     checkedOn: '2026-10-14',
     experience: '7 years',
     practice: 'CARE Hospitals, Nampally, Hyderabad',
-    elitePractice: 'Elite Health Care, V Care Clinic, Aghapura, Nampally, Hyderabad',
+    elitePractice: 'Elite Health Care, Opposite Pillar No. 97, Mughal Nagar, Ring Road, Mehdi Colony, Hyderabad',
     languages: ['Hindi', 'English', 'Telugu'],
     education: [
       {degree: 'MBBS', institution: 'Deccan Medical College, Hyderabad', period: '2014'},
@@ -55,5 +55,5 @@ export const faqs = [
   ['How can I get my lab reports?', 'Use Request Lab Report to send your registered mobile number and sample or bill number to reception on WhatsApp. The clinic will confirm whether your report is available.'],
   ['Can I enquire about medicines?', 'Send your medicine names and quantities through the pharmacy enquiry form. You can attach your prescription in WhatsApp. Reception will confirm stock, pricing and delivery availability.'],
   ['What are the clinic timings?', 'Monday to Sunday: 7:00 PM to 10:00 PM. Please confirm doctor consultation and sample collection availability with reception.'],
-  ['Where is Elite Health Care located?', 'V Care Clinic, Behind Habeeb Nagar PS, Near Alhamdulillah Hotel Road, Aghapura, Nampally, Hyderabad, Telangana 500001.'],
+  ['Where is Elite Health Care located?', 'Opposite Pillar No. 97, Mughal Nagar, Ring Road, Mehdi Colony, Hyderabad, Telangana 500008.'],
 ];
