@@ -113,7 +113,7 @@
     const suffix=element.dataset.suffix||'';
     const display=value=>value.toLocaleString('en-IN')+suffix;
     if(!Number.isFinite(target)||motionReduced){element.textContent=display(target);return;}
-    const started=performance.now(),duration=900;
+    const started=performance.now(),duration=3e3;
     const tick=now=>{
       const progress=Math.min((now-started)/duration,1)
       element.textContent=display(Math.round(target*(1-Math.pow(1-progress,3))));
