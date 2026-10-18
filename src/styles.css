@@ -343,7 +343,7 @@ main:has(> .hero)>.doctor-cta{order:7}main:has(> .hero)>#faq{order:8}
 
 /* Keep the hero portrait centred and fully visible on narrow phones. */
 @media(max-width:600px){
-  .hero-art,.hero:has(.doctor-portrait) .hero-art{align-self:center!important;width:min(100%,300px)!important;max-width:300px!important;height:315px!important;margin:18px auto 0!important;overflow:visible!important}
+  .hero-art,.hero:has(.doctor-portrait) .hero-art{position:relative!important;inset:auto!important;align-self:center!important;width:min(100%,300px)!important;max-width:300px!important;height:315px!important;margin:18px auto 0!important;overflow:visible!important}
   .hero-art .doctor-portrait{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;object-fit:contain!important;object-position:center bottom!important;margin:0 auto!important}
 }
 @media(max-width:380px){
