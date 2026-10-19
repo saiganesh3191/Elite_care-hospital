@@ -39,6 +39,14 @@ test('all four routes have local assets, semantic navigation and correct metadat
       assert.equal(window.document.querySelectorAll('#doctor-media-home .profile-media-card').length,6);
       assert.equal(window.document.querySelectorAll('#doctor-media-home .talk-card .play-button').length,3);
       assert.ok(window.document.querySelector('#doctor-media-home .talk-card[href*="youtube.com/watch"]'));
+      assert.equal(window.document.querySelectorAll('#procedures .home-procedure-category').length,4);
+      assert.equal(window.document.querySelectorAll('#procedures .home-procedure-card').length,25);
+      assert.equal(window.document.querySelectorAll('#procedures .procedure-card-image').length,25);
+      assert.equal(window.document.querySelectorAll('#procedures .home-procedure-category-head img').length,4);
+      assert.match($('#procedures').textContent,/Diagnostic Procedures/);
+      assert.match($('#procedures').textContent,/Therapeutic Procedures/);
+      assert.match($('#procedures').textContent,/Pediatric Pulmonology/);
+      assert.match($('#procedures').textContent,/Advanced Pulmonary Care/);
       assert.equal($('#reviews [data-count="10000"]').dataset.suffix,'+');
       assert.equal($('#reviews .google-review-card a').href,clinic.mapsUrl);
       assert.equal(schema.find(n=>n['@type']==='Person').sameAs,clinic.doctorProfile.source);
