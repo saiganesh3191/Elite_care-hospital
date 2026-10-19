@@ -64,7 +64,9 @@ test('full doctor profile provides structured, carefully qualified information',
   assert.match($('.profile-location address').textContent,/Pillar No\. 97, Mughal Nagar/);
   assert.equal($('.profile-location>.button').href,clinic.mapsUrl);
   for(const id of ['about-doctor','qualifications','expertise','procedures','experience','recognition','doctor-faq']) assert.ok($('#'+id));
-  assert.ok(window.document.querySelectorAll('.procedure-grid>div').length>=10);
+  assert.equal(window.document.querySelectorAll('.procedure-group').length,4);
+  assert.ok(window.document.querySelectorAll('.procedure-group li').length>=25);
+  assert.equal(window.document.querySelectorAll('.procedure-group img').length,4);
   assert.equal(window.document.querySelectorAll('.profile-media-card').length,6);
   assert.equal(window.document.querySelectorAll('.profile-media-card img').length,6);
   assert.equal(window.document.querySelectorAll('.talk-card .play-button').length,3);
@@ -72,7 +74,7 @@ test('full doctor profile provides structured, carefully qualified information',
   assert.match(window.document.querySelector('.talk-card[href*="youtube.com/watch"] img').src,/img\.youtube\.com\/vi\/eGKtYMoaVZs/);
   assert.equal(window.document.querySelectorAll('[role="tab"]').length,3);
   $('#memberships-tab').click();assert.equal($('#memberships-panel').hidden,false);assert.equal($('#awards-panel').hidden,true);
-  assert.match(window.document.body.textContent,/Client verification required/);
+  assert.doesNotMatch(window.document.body.textContent,/Client verification required/);
   assert.doesNotMatch(window.document.body.textContent,/guaranteed|best doctor in Hyderabad/i);
   dom.window.close();
 });
