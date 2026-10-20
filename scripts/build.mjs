@@ -7,7 +7,7 @@ const hash=s=>createHash('sha256').update(s).digest('hex').slice(0,10);
 const css=readFileSync('src/styles.css','utf8'),js=readFileSync('src/client.js','utf8');
 mkdirSync(`${out}/assets`,{recursive:true});
 writeFileSync(`${out}/assets/site-${hash(css)}.css`,css);writeFileSync(`${out}/assets/site-${hash(js)}.js`,js);
-const origin=new URL(process.env.SITE_URL||'https://elite-care-hospital.pages.dev').origin;
+const origin=new URL(process.env.SITE_URL||'https://drfaizanaziz.com').origin;
 const wa=`https://wa.me/${clinic.phone.replace(/\D/g,'')}`;
 const maps=clinic.mapsUrl||`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.address)}`;
 const paths={calendar:'M8 2v4m8-4v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2M8 14h3v3H8z',tube:'M9 3h6M10 3v10l-5 7h14l-5-7V3M8 16h8',pill:'M8 4a5 5 0 0 1 7 7l-5 5a5 5 0 0 1-7-7l5-5m-3 3 7 7m5 0 5 5m-1-7a4 4 0 1 0-6 6 4 4 0 0 0 6-6',heart:'M12 21C-4 11 3-1 12 6c9-7 16 5 0 15m-8-9h5l2-4 3 8 2-4h4',doctor:'M8 3v5a4 4 0 0 0 8 0V3M6 3h4m4 0h4M12 12v4a5 5 0 0 0 10 0v-3m-2-2a2 2 0 1 0 4 0 2 2 0 0 0-4 0',bed:'M3 7v14m18-7v7M3 17h18M7 10h12a2 2 0 0 1 2 2v5H7v-7M5 10h2v5H5z',shield:'M12 2 3 6v6c0 5 9 10 9 10s9-5 9-10V6l-9-4m-4 9 3 3 5-6',clock:'M12 8v5l4 2M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0',phone:'M5 3h4l2 5-3 2a14 14 0 0 0 6 6l2-3 5 2v4c-12 6-22-14-16-16',pin:'M12 22S3 14 3 9a9 9 0 0 1 18 0c0 5-9 13-9 13m3-13a3 3 0 1 1-6 0 3 3 0 0 1 6 0',arrow:'m9 5 7 7-7 7',chat:'M21 11a9 9 0 0 1-9 9H3l2-5a9 9 0 1 1 16-4M8 9h8m-8 4h5',check:'m5 12 4 4L19 6',lungs:'M10 4v10c-5-6-6 1-8 3-2-8 5-16 8-13m4 0v10c5-6 6 1 8 3 2-8-5-16-8-13M12 2v6m0 0-2 3m2-3 2 3'};

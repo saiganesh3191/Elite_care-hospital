@@ -19,7 +19,7 @@ test('all four routes have local assets, semantic navigation and correct metadat
   for(const route of ['','doctor/dr-faizan-aziz','lab-tests','gallery']){
     const {dom,$,window}=page(route);
     assert.equal(window.document.querySelectorAll('h1').length,1);
-    assert.equal($('link[rel="canonical"]').href,'https://elite-care-hospital.pages.dev/'+route);
+    assert.equal($('link[rel="canonical"]').href,'https://drfaizanaziz.com/'+route);
     const schema=JSON.parse($('script[type="application/ld+json"]').textContent)['@graph'];
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').telephone,clinic.phone);
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').hasMap,clinic.mapsUrl);
