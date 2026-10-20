@@ -29,7 +29,7 @@ test('all four routes have local assets, semantic navigation and correct metadat
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').telephone,clinic.phone);
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').hasMap,clinic.mapsUrl);
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').openingHoursSpecification[0].opens,'19:00');
-    for(const el of window.document.querySelectorAll('img[src^="/"],script[src^="/"],link[href^="/assets/"]')){
+    for(const el of window.document.querySelectorAll('img[src^="/"],source[src^="/"],script[src^="/"],link[href^="/assets/"]')){
       const asset=el.getAttribute('src')||el.getAttribute('href');assert.ok(existsSync('dist'+asset),asset);
     }
     for(const link of window.document.querySelectorAll('a[href^="#"]')) assert.ok(window.document.getElementById(link.getAttribute('href').slice(1)),link.outerHTML);
@@ -37,7 +37,7 @@ test('all four routes have local assets, semantic navigation and correct metadat
     if(!route){assert.equal($('.brand img').getAttribute('src'),'/images/logo-clean.png');assert.equal($('.doctor-portrait').getAttribute('src'),'/images/dr-faizan-enhanced.webp');
       assert.equal(window.document.querySelectorAll('#doctors').length,1);
       assert.match($('#doctors').textContent,/Education & Fellowship/);
-      assert.match($('#doctors').textContent,/7 years/);
+      assert.match($('#doctors').textContent,/10\+ years/);
       assert.match($('#doctors').textContent,/Hindi, English, Telugu/);
       assert.match($('#doctors').textContent,/Elite Health Care, Opposite Pillar No\. 97/);
       assert.equal($('.doctor-source').href,clinic.doctorProfile.source);
@@ -53,6 +53,8 @@ test('all four routes have local assets, semantic navigation and correct metadat
       assert.match($('#procedures').textContent,/Pediatric Pulmonology/);
       assert.match($('#procedures').textContent,/Advanced Pulmonary Care/);
       assert.equal($('#reviews [data-count="10000"]').dataset.suffix,'+');
+      assert.equal($('#reviews [data-count="1000"]').dataset.suffix,'+');
+      assert.equal(window.document.querySelectorAll('#patient-testimonials-home video').length,4);
       assert.equal($('#reviews .google-review-card a').href,clinic.mapsUrl);
       assert.ok(schema.find(n=>n['@type']==='Person').sameAs.includes(clinic.doctorProfile.source));
       assert.equal(schema.find(n=>n['@type']==='WebSite').name,'Elite Health Care');
@@ -101,6 +103,10 @@ test('gallery shows sourced doctor photography instead of placeholders',()=>{
   assert.equal(window.document.querySelectorAll('.gallery-card figcaption>a[target="_blank"]').length,2);
   assert.equal(window.document.querySelectorAll('#doctor-media-gallery .profile-media-card').length,6);
   assert.equal(window.document.querySelectorAll('#doctor-media-gallery .talk-card .play-button').length,3);
+  assert.equal(window.document.querySelectorAll('#patient-testimonials-gallery video').length,4);
+  assert.equal(window.document.querySelectorAll('#clinical-procedure-videos video').length,14);
+  assert.equal(window.document.querySelectorAll('#clinical-procedure-videos .clinical-photo-pair img').length,2);
+  for(const video of window.document.querySelectorAll('video')) assert.equal(video.getAttribute('preload'),'metadata');
   assert.match(window.document.body.textContent,/Dr\. Faizan Aziz/);
   assert.match(window.document.body.textContent,/1st Indian to receive a European Certified Fellowship/);
   assert.match(window.document.body.textContent,/Project OJAS/);

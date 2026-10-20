@@ -14,7 +14,7 @@ export const clinic = {
   doctorProfile: {
     source: 'https://www.carehospitals.com/doctor/hyderabad/nampally/faizan-aziz-interventional-pulmonologist',
     checkedOn: '2026-10-14',
-    experience: '7 years',
+    experience: '10+ years',
     practice: 'CARE Hospitals, Nampally, Hyderabad',
     elitePractice: 'Elite Health Care, Opposite Pillar No. 97, Mughal Nagar, Ring Road, Mehdi Colony, Hyderabad',
     languages: ['Hindi', 'English', 'Telugu'],
@@ -59,7 +59,19 @@ export const clinic = {
       ['Current listing', 'Consultant Interventional Pulmonologist', 'CARE Hospitals, Nampally'],
     ],
     memberships: ['European Respiratory Society (reported)', 'British Thoracic Society (reported)', 'MRCEM / Royal College of Emergency Medicine status (exact credential to be confirmed)'],
-    awards: ['Best International Fellow in Interventional Pulmonology, Venice (reported, 2023)', 'Dr. APJ Abdul Kalam Health and Excellence Award (reported, 2024)', 'India’s Most Eminent Health Care Excellence recognition by Success Today (reported, 2024)'],
+    awards: ['Best International Fellow in Interventional Pulmonology, Venice (2023)', 'Dr. A.P.J. Abdul Kalam Health and Medical Excellence Award (2024)', 'COVID Warrior recognition for treating more than 1,000 patients during the pandemic and supporting home intensive-care setups', 'India’s Most Eminent Health Care Excellence recognition by Success Today (2024)'],
+    testimonials: [
+      {title:'Patient experience with respiratory care',description:'A patient shares her experience after receiving respiratory care from Dr. Faizan Aziz.',video:'/media/testimonials/patient-testimonial-respiratory-care.mp4',poster:'/images/media/patient-testimonial-respiratory-care.jpg',duration:'0:44'},
+      {title:'Patient and community conversation – Part 1',description:'A community conversation about care and the patient experience.',video:'/media/testimonials/patient-experience-interview-part-1.mp4',poster:'/images/media/patient-experience-interview-part-1.jpg',duration:'0:53'},
+      {title:'Patient and community conversation – Part 2',description:'Continuation of the discussion about respiratory care and support.',video:'/media/testimonials/patient-experience-interview-part-2.mp4',poster:'/images/media/patient-experience-interview-part-2.jpg',duration:'1:33'},
+      {title:'Patient and community conversation – Part 3',description:'Closing segment of the patient and community discussion.',video:'/media/testimonials/patient-experience-interview-part-3.mp4',poster:'/images/media/patient-experience-interview-part-3.jpg',duration:'1:51'},
+    ],
+    clinicalVideos: Array.from({length:14},(_,index)=>({
+      title:`Clinical procedure video ${String(index+1).padStart(2,'0')}`,
+      description:index<9?'Bronchoscopy and airway intervention footage from the procedure suite.':'Procedure-suite footage showing image-guided respiratory intervention.',
+      video:`/media/procedures/clinical-procedure-${String(index+1).padStart(2,'0')}.mp4`,
+      poster:`/images/media/clinical-procedure-${String(index+1).padStart(2,'0')}.jpg`,
+    })),
     media: [
       ['Interview', 'His journey in interventional pulmonology', 'Training, respiratory-health work, clinical focus and professional goals.', 'https://thesuccesstoday.com/healthcare-eminence-awards/dr-faizan-aziz-mbbs-interventional-pulmonologist-consultant/', '/images/gallery/dr-faizan-interview.jpg'],
       ['Community health', 'Project OJAS for tuberculosis patients', 'CARE Hospitals and Jagathi Foundation initiative supporting TB patients in Hyderabad.', 'https://www.pninews.com/care-hospitals-in-association-with-jagathi-foundation-launches-flagship-csr-initiative-project-ojas-to-support-tb-patients/', '/images/gallery/project-ojas.jpg'],
