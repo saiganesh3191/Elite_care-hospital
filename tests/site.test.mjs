@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync,statSync} from 'node:fs';
 import {JSDOM} from 'jsdom';
-import {clinic} from '../src/clinic.mjs';
+import {clinic,faqs} from '../src/clinic.mjs';
 const script=readFileSync('src/client.js','utf8');
 function page(route='') {
   const dom=new JSDOM(readFileSync(`dist/${route?route+'/':''}index.html`,'utf8'),{url:'https://elite-care-hospital.pages.dev/'+route,runScripts:'outside-only',pretendToBeVisual:true});
@@ -20,6 +20,11 @@ test('all four routes have local assets, semantic navigation and correct metadat
     const {dom,$,window}=page(route);
     assert.equal(window.document.querySelectorAll('h1').length,1);
     assert.equal($('link[rel="canonical"]').href,'https://drfaizanaziz.com/'+route);
+    assert.equal($('meta[name="robots"]').content,'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
+    assert.equal($('meta[property="og:url"]').content,'https://drfaizanaziz.com/'+route);
+    assert.match($('meta[property="og:image"]').content,/^https:\/\/drfaizanaziz\.com\/images\//);
+    assert.equal($('meta[name="twitter:card"]').content,'summary_large_image');
+    assert.ok($('meta[name="description"]').content.length>=120);
     const schema=JSON.parse($('script[type="application/ld+json"]').textContent)['@graph'];
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').telephone,clinic.phone);
     assert.equal(schema.find(n=>n['@type']==='MedicalClinic').hasMap,clinic.mapsUrl);
@@ -49,7 +54,9 @@ test('all four routes have local assets, semantic navigation and correct metadat
       assert.match($('#procedures').textContent,/Advanced Pulmonary Care/);
       assert.equal($('#reviews [data-count="10000"]').dataset.suffix,'+');
       assert.equal($('#reviews .google-review-card a').href,clinic.mapsUrl);
-      assert.equal(schema.find(n=>n['@type']==='Person').sameAs,clinic.doctorProfile.source);
+      assert.ok(schema.find(n=>n['@type']==='Person').sameAs.includes(clinic.doctorProfile.source));
+      assert.equal(schema.find(n=>n['@type']==='WebSite').name,'Elite Health Care');
+      assert.equal(schema.find(n=>n['@type']==='FAQPage').mainEntity.length,faqs.length);
       assert.doesNotMatch(window.document.body.textContent,/68106529/);
 for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','contact','timings','location','appointment'])assert.ok($('#'+id));}
     assert.equal($('#location .map-link').href,clinic.mapsUrl);
@@ -62,7 +69,7 @@ for(const id of ['home','doctors','services','lab-tests','pharmacy','faq','conta
     dom.window.close();
   }
   assert.ok(readFileSync('dist/robots.txt','utf8').includes('/sitemap.xml'));
-  const sitemap=readFileSync('dist/sitemap.xml','utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,4);
+  const sitemap=readFileSync('dist/sitemap.xml','utf8');assert.equal((sitemap.match(/<loc>/g)||[]).length,4);assert.equal((sitemap.match(/<lastmod>/g)||[]).length,4);
   assert.ok(statSync('src/client.js').size<15000);
 });
 test('full doctor profile provides structured, carefully qualified information',()=>{
