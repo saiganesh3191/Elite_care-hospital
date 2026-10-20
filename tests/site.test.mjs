@@ -88,12 +88,14 @@ test('full doctor profile provides structured, carefully qualified information',
 });
 test('gallery shows sourced doctor photography instead of placeholders',()=>{
   const {window,dom}=page('gallery');
-  assert.equal(window.document.querySelectorAll('.gallery-card').length,4);
-  assert.equal(window.document.querySelectorAll('.gallery-card img[alt]').length,4);
+  assert.equal(window.document.querySelectorAll('.gallery-card').length,16);
+  assert.equal(window.document.querySelectorAll('.gallery-card img[alt]').length,16);
+  assert.equal(window.document.querySelectorAll('.gallery-card img[src*="/european-fellowship/"]').length,12);
   assert.equal(window.document.querySelectorAll('.gallery-card figcaption>a[target="_blank"]').length,2);
   assert.equal(window.document.querySelectorAll('#doctor-media-gallery .profile-media-card').length,6);
   assert.equal(window.document.querySelectorAll('#doctor-media-gallery .talk-card .play-button').length,3);
   assert.match(window.document.body.textContent,/Dr\. Faizan Aziz/);
+  assert.match(window.document.body.textContent,/1st Indian to receive a European Certified Fellowship/);
   assert.match(window.document.body.textContent,/Project OJAS/);
   assert.doesNotMatch(window.document.body.textContent,/coming soon/i);
   dom.window.close();
